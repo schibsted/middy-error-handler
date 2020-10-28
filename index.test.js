@@ -45,3 +45,34 @@ test('Middleware returns error details', async () => {
 
     expect(mockLogger.error).toHaveBeenCalledTimes(1);
 });
+
+test('Keep data already present in response', async () => {
+    const handler = middy(async () => {
+        throw error;
+    });
+
+    // eslint-disable-next-line no-shadow
+    handler.onError(async (handler) => {
+        // eslint-disable-next-line no-param-reassign
+        handler.response = {
+            headers: {
+                someHeader: 'someValue',
+            },
+        };
+
+        return true;
+    });
+
+    handler.use(middleware({ logger: false }));
+
+    await expect(handler({}, {})).rejects.toEqual(
+        expect.objectContaining({
+            response: {
+                body: JSON.stringify({ statusCode: 404, message: 'File not found' }),
+                statusCode: 404,
+                headers: { someHeader: 'someValue' },
+            },
+            error,
+        })
+    );
+});
