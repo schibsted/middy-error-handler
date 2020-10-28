@@ -24,7 +24,7 @@ module.exports = ({ logger = console, level = 'error' } = {}) => {
                 ),
             };
 
-            return false;
+            return handler;
         },
     };
 };
