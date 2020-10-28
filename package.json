@@ -27,9 +27,17 @@
     "url": "git+https://github.com/schibsted/middy-error-handler.git"
   },
   "keywords": [
-    "middy",
-    "errorhandler",
-    "middleware"
+    "Lambda",
+    "Middleware",
+    "Serverless",
+    "Framework",
+    "AWS",
+    "AWS Lambda",
+    "Middy",
+    "HTTP",
+    "API",
+    "Error Handler",
+    "Error Handling"
   ],
   "author": "",
   "license": "GPL-3.0-or-later",
