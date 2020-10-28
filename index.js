@@ -13,6 +13,7 @@ module.exports = ({ logger = console, level = 'error' } = {}) => {
 
             // eslint-disable-next-line no-param-reassign
             handler.response = {
+                ...R.propOr({}, 'response', handler),
                 statusCode: R.propOr(500, 'statusCode', error),
                 body: JSON.stringify(
                     R.filter(Boolean, {
