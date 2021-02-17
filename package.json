@@ -40,7 +40,7 @@
     "Error Handling"
   ],
   "author": "",
-  "license": "GPL-3.0-or-later",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/schibsted/middy-error-handler/issues"
   },
