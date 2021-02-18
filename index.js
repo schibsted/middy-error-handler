@@ -7,7 +7,9 @@ module.exports = ({ logger = console, level = 'error' } = {}) => {
 
             // if there are a `statusCode` and an `error` field
             // this is a valid http error object
-            if (typeof logger[level] === 'function') {
+            if (typeof logger[level] === 'function')
+
+            {
                 logger[level](
                     {
                         error: R.pick(['name', 'message', 'stack', 'details', 'status', 'statusCode', 'expose'], error),
