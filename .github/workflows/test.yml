@@ -15,10 +15,7 @@ jobs:
           node-version: ${{ matrix.node }}
           check-latest: true
       - run: npm ci --quiet
-      - uses: bradennapier/eslint-plus-action@v3.4.2
-        with:
-          issueSummaryOnlyOnEvent: true
-          npmInstall: false
+      - run: npm run lint
   test:
     runs-on: ubuntu-latest
     strategy:
