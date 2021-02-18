@@ -1,6 +1,6 @@
 {
   "name": "@schibsted/middy-error-handler",
-  "version": "0.1.5",
+  "version": "0.2.0",
   "description": "Middy middleware for adding caching headers to success response and errors",
   "main": "index.js",
   "scripts": {
@@ -40,7 +40,7 @@
     "Error Handling"
   ],
   "author": "",
-  "license": "GPL-3.0-or-later",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/schibsted/middy-error-handler/issues"
   },
