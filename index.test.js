@@ -13,11 +13,8 @@ test('Middleware works with logging disabled', async () => {
 
     await expect(handler({}, {})).rejects.toEqual(
         expect.objectContaining({
-            response: {
-                body: JSON.stringify({ statusCode: 404, message: 'File not found' }),
-                statusCode: 404,
-            },
-            error,
+            body: JSON.stringify({ statusCode: 404, message: 'File not found' }),
+            statusCode: 404,
         })
     );
 });
@@ -35,11 +32,8 @@ test('Middleware returns error details', async () => {
 
     await expect(handler({}, {})).rejects.toEqual(
         expect.objectContaining({
-            response: {
-                body: JSON.stringify({ statusCode: 404, message: 'File not found' }),
-                statusCode: 404,
-            },
-            error,
+            body: JSON.stringify({ statusCode: 404, message: 'File not found' }),
+            statusCode: 404,
         })
     );
 
@@ -67,12 +61,9 @@ test('Keep data already present in response', async () => {
 
     await expect(handler({}, {})).rejects.toEqual(
         expect.objectContaining({
-            response: {
-                body: JSON.stringify({ statusCode: 404, message: 'File not found' }),
-                statusCode: 404,
-                headers: { someHeader: 'someValue' },
-            },
-            error,
+            body: JSON.stringify({ statusCode: 404, message: 'File not found' }),
+            statusCode: 404,
+            headers: { someHeader: 'someValue' },
         })
     );
 });
