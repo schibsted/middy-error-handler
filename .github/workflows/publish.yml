@@ -13,6 +13,8 @@ jobs:
           node-version: '14'
           check-latest: true
           registry-url: 'https://registry.npmjs.org'
+      - run: npm ci --quiet
       - run: npm publish --access public
         env:
+          HUSKY: 0
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
