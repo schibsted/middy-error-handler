@@ -61,7 +61,7 @@
     "prettier": "2.5.1"
   },
   "dependencies": {
-    "ramda": "^0.27.1"
+    "ramda": "^0.28.0"
   },
   "peerDependencies": {
     "@middy/core": ">=2.5.4"
