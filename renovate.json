@@ -1,6 +1,6 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:base"],
+  "extends": ["github>schibsted/niche-renovate-config:default"],
   "packageRules": [
     {
       "packageNames": ["node"],
