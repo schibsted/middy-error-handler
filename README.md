@@ -32,24 +32,60 @@ npm install --save @schibsted/middy-error-handler
 
 ## Sample usage
 
+### with default params
+
 ```javascript
 const middy = require('@middy/core');
+const createError = require('http-errors');
 const errorHandler = require('@schibsted/middy-error-handler');
 
 const handler = middy(() => {
-  throw new createError.NotFound('File not found');
+    throw new createError.NotFound('File not found');
 });
 
-handler
-  .use(errorHandler());
+handler.use(errorHandler({ logger }));
 
-// when Lambda runs the handler...
-handler({}, {}, (_, response) => {
-  expect(response).toEqual({
-    statusCode: 404,
-    body: JSON.stringify({ statusCode: 404, message: 'File not found' }),
-  })
-})
+handler({}, {}).then((response) => {
+    console.log(response);
+
+    // {
+    //     statusCode: 404,
+    //     body: '{"statusCode":404,"message":"File not found","stack":"NotFoundError: File not found\\n    at /Users/wojciechiskra/Code/pent/pent-api/test.js:11:11\\n    at runRequest (/Users/wojciechiskra/Code/pent/pent-api/node_modules/@middy/core/index.js:86:32)"}'
+    //     stack: '...'
+    // }
+});
+
+```
+
+### with custom logger
+
+```javascript
+const middy = require('@middy/core');
+const createError = require('http-errors');
+const errorHandler = require('@schibsted/middy-error-handler');
+const { LambdaLog } = require('lambda-log');
+
+const logger = new LambdaLog({
+    tags: ['foobar'],
+});
+
+const handler = middy(() => {
+    throw new createError.NotFound('File not found');
+});
+
+handler.use(errorHandler({ logger }));
+
+handler({}, {}).then((response) => {
+    // same + also executes logger.error function
+
+    console.log(response);
+
+    // {
+    //     statusCode: 404,
+    //     body: '{"statusCode":404,"message":"File not found","stack":"NotFoundError: File not found\\n    at /Users/wojciechiskra/Code/pent/pent-api/test.js:11:11\\n    at runRequest (/Users/wojciechiskra/Code/pent/pent-api/node_modules/@middy/core/index.js:86:32)"}'
+    //     stack: '...'
+    // }
+});
 ```
 
 ## Contributing
