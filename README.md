@@ -43,7 +43,7 @@ const handler = middy(() => {
     throw new createError.NotFound('File not found');
 });
 
-handler.use(errorHandler({ logger }));
+handler.use(errorHandler());
 
 handler({}, {}).then((response) => {
     console.log(response);
