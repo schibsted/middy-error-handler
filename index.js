@@ -1,4 +1,5 @@
-const R = require('ramda');
+const filterObject = (obj, predicate) =>
+    Object.fromEntries(Object.entries(obj).filter(([key, val]) => predicate(val, key)));
 
 module.exports = ({ logger = console, level = 'error', exposeStackTrace = false, filter = () => true } = {}) => ({
     onError: async (handler) => {
@@ -9,23 +10,34 @@ module.exports = ({ logger = console, level = 'error', exposeStackTrace = false,
         if (filter(error) && typeof logger[level] === 'function') {
             logger[level](
                 {
-                    error: R.pick(['name', 'message', 'stack', 'details', 'status', 'statusCode', 'expose'], error),
+                    error: (({ name, message, stack, details, status, statusCode, expose }) => ({
+                        name,
+                        message,
+                        stack,
+                        details,
+                        status,
+                        statusCode,
+                        expose,
+                    }))(error),
                 },
-                `${R.prop('name', error)}: ${R.prop('message', error)}`
+                `${error.name ?? ''}: ${error.message ?? ''}`
             );
         }
 
         // eslint-disable-next-line no-param-reassign
         handler.response = {
-            ...R.propOr({}, 'response', handler),
-            statusCode: R.propOr(500, 'statusCode', error),
+            ...(handler.response ?? {}),
+            statusCode: error.statusCode ?? 500,
             body: JSON.stringify(
-                R.filter(Boolean, {
-                    statusCode: R.prop('statusCode', error),
-                    message: R.prop('message', error),
-                    details: R.prop('details', error),
-                    stack: exposeStackTrace && filter(error) && R.prop('stack', error),
-                })
+                filterObject(
+                    {
+                        statusCode: error.statusCode,
+                        message: error.message,
+                        details: error.details,
+                        stack: exposeStackTrace && filter(error) && error.stack,
+                    },
+                    Boolean
+                )
             ),
         };
     },
