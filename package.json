@@ -1,6 +1,6 @@
 {
   "name": "@schibsted/middy-error-handler",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "description": "Middy middleware for adding caching headers to success response and errors",
   "main": "index.js",
   "engines": {
