@@ -29,6 +29,8 @@ npm install --save @schibsted/middy-error-handler
 
 - `logger` (defaults to `console`) - a logging function that is invoked with the current error as an argument. You can pass `false` if you don't want the logging to happen.
 - `level` (defaults to `error`) - log level to use for the error log entry
+- `exposeStackTrace` (defaults to `false`) - if `true`, the stack trace will be exposed in the response body
+- `filter` (function, defaults to always returning `true`) - a function that is invoked with the current error as an argument. If it returns `true`, the error is logged and its stack trace returned as long as `exposeStackTrace` is also true, otherwise it is not.
 
 ## Sample usage
 
@@ -43,14 +45,17 @@ const handler = middy(() => {
     throw new createError.NotFound('File not found');
 });
 
-handler.use(errorHandler());
+handler.use(errorHandler({
+    exposeStackTrace: process.env !== 'production', # don't return stack trace in response body in production
+    filter: (err) => err.statusCode !== 404, # don't log 404 errors, they happen a lot
+}));
 
 handler({}, {}).then((response) => {
     console.log(response);
 
     // {
     //     statusCode: 404,
-    //     body: '{"statusCode":404,"message":"File not found","stack":"NotFoundError: File not found\\n    at /Users/wojciechiskra/Code/pent/pent-api/test.js:11:11\\n    at runRequest (/Users/wojciechiskra/Code/pent/pent-api/node_modules/@middy/core/index.js:86:32)"}'
+    //     body: '{"statusCode":404,"message":"File not found","stack":"..."}'
     //     stack: '...'
     // }
 });

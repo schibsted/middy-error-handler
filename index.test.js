@@ -17,7 +17,7 @@ test('Middleware works with logging disabled', async () => {
     });
 });
 
-test('Middleware returns error details', async () => {
+test("Middleware doesn't log 404 errors - they happen a lot", async () => {
     const mockLogger = {
         error: jest.fn(() => {}),
     };
@@ -26,14 +26,46 @@ test('Middleware returns error details', async () => {
         throw new createError.NotFound('File not found');
     });
 
-    handler.use(middleware({ logger: mockLogger }));
+    handler.use(middleware({ logger: mockLogger, filter: (err) => err.statusCode >= 500 }));
 
-    await expect(handler({}, {})).resolves.toMatchObject({
-        body: JSON.stringify({ statusCode: 404, message: 'File not found' }),
-        statusCode: 404,
+    const response = await handler({}, {});
+    const { statusCode, message, stack } = JSON.parse(response.body);
+
+    expect(statusCode).toBe(404);
+    expect(message).toBe('File not found');
+    expect(stack).toBeUndefined();
+
+    expect(mockLogger.error).toHaveBeenCalledTimes(0);
+});
+
+test('Middleware logs and returns all error details', async () => {
+    const mockLogger = {
+        error: jest.fn(() => {}),
+    };
+
+    const handler = middy(() => {
+        throw new createError.ServiceUnavailable('Service not available');
     });
 
+    handler.use(middleware({ logger: mockLogger, exposeStackTrace: true }));
+
+    const response = await handler({}, {});
+    const { statusCode, message, stack } = JSON.parse(response.body);
+
+    expect(statusCode).toBe(503);
+    expect(message).toBe('Service not available');
+    expect(stack).toBeDefined();
+
     expect(mockLogger.error).toHaveBeenCalledTimes(1);
+
+    const [errorObject, errorMessage] = mockLogger.error.mock.calls[mockLogger.error.mock.calls.length - 1];
+    expect(errorMessage).toBe('ServiceUnavailableError: Service not available');
+    expect(errorObject.error.name).toBe('ServiceUnavailableError');
+    expect(errorObject.error.message).toBe('Service not available');
+    expect(errorObject.error.status).toBe(503);
+    expect(errorObject.error.statusCode).toBe(503);
+    expect(errorObject.error.expose).toBe(false);
+    expect(errorObject.error.stack).not.toBeNull();
 });
 
 test('Keep data already present in response', async () => {

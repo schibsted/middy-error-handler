@@ -1,12 +1,12 @@
 const R = require('ramda');
 
-module.exports = ({ logger = console, level = 'error' } = {}) => ({
+module.exports = ({ logger = console, level = 'error', exposeStackTrace = false, filter = () => true } = {}) => ({
     onError: async (handler) => {
         const { error } = handler;
 
         // if there are a `statusCode` and an `error` field
         // this is a valid http error object
-        if (typeof logger[level] === 'function') {
+        if (filter(error) && typeof logger[level] === 'function') {
             logger[level](
                 {
                     error: R.pick(['name', 'message', 'stack', 'details', 'status', 'statusCode', 'expose'], error),
@@ -24,7 +24,7 @@ module.exports = ({ logger = console, level = 'error' } = {}) => ({
                     statusCode: R.prop('statusCode', error),
                     message: R.prop('message', error),
                     details: R.prop('details', error),
-                    stack: !['test', 'production'].includes(process.env.NODE_ENV) && R.prop('stack', error),
+                    stack: exposeStackTrace && filter(error) && R.prop('stack', error),
                 })
             ),
         };
