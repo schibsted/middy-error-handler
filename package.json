@@ -4,7 +4,7 @@
   "description": "Middy middleware for adding caching headers to success response and errors",
   "main": "index.js",
   "engines": {
-    "node": "^12.20.0 || ^14.13.1"
+    "node": ">=14.0.0"
   },
   "scripts": {
     "lint": "eslint .",
@@ -60,9 +60,7 @@
     "lint-staged": "12.3.6",
     "prettier": "2.6.0"
   },
-  "dependencies": {
-    "ramda": "^0.28.0"
-  },
+  "dependencies": {},
   "peerDependencies": {
     "@middy/core": ">=2.5.4"
   }
