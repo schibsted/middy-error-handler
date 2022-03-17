@@ -34,7 +34,7 @@ npm install --save @schibsted/middy-error-handler
 
 ## Sample usage
 
-### with default params
+### with mostly default params
 
 ```javascript
 const middy = require('@middy/core');
@@ -42,27 +42,24 @@ const createError = require('http-errors');
 const errorHandler = require('@schibsted/middy-error-handler');
 
 const handler = middy(() => {
-    throw new createError.NotFound('File not found');
+    throw new createError.ServiceUnavailable('Service not available');
 });
 
-handler.use(errorHandler({
-    exposeStackTrace: process.env !== 'production', # don't return stack trace in response body in production
-    filter: (err) => err.statusCode !== 404, # don't log 404 errors, they happen a lot
-}));
+handler.use(errorHandler({exposeStackTrace: true}));
 
 handler({}, {}).then((response) => {
     console.log(response);
 
     // {
-    //     statusCode: 404,
-    //     body: '{"statusCode":404,"message":"File not found","stack":"..."}'
+    //     statusCode: 503,
+    //     body: '{"statusCode":503,"message":"Service not available","stack":"..."}'
     //     stack: '...'
     // }
 });
 
 ```
 
-### with custom logger
+### with custom logger and filtering out 404 errors
 
 ```javascript
 const middy = require('@middy/core');
@@ -75,10 +72,13 @@ const logger = new LambdaLog({
 });
 
 const handler = middy(() => {
-    throw new createError.NotFound('File not found');
+    throw new createError.ServiceUnavailable('Service not available');
 });
 
-handler.use(errorHandler({ logger }));
+handler.use(errorHandler({ 
+    filter: (err) => err.statusCode !== 404, // don't log 404 errors, they happen a lot
+    logger 
+}));
 
 handler({}, {}).then((response) => {
     // same + also executes logger.error function
@@ -86,8 +86,8 @@ handler({}, {}).then((response) => {
     console.log(response);
 
     // {
-    //     statusCode: 404,
-    //     body: '{"statusCode":404,"message":"File not found","stack":"NotFoundError: File not found\\n    at /Users/wojciechiskra/Code/pent/pent-api/test.js:11:11\\n    at runRequest (/Users/wojciechiskra/Code/pent/pent-api/node_modules/@middy/core/index.js:86:32)"}'
+    //     statusCode: 503,
+    //     body: '{"statusCode":503,"message":"Service not available","stack":"..."}'
     //     stack: '...'
     // }
 });
