@@ -1,17 +1,18 @@
 {
   "name": "@schibsted/middy-error-handler",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "description": "Middy middleware for adding caching headers to success response and errors",
   "main": "index.js",
   "engines": {
     "node": ">=14.0.0"
   },
   "scripts": {
-    "lint": "eslint .",
     "lint-fix": "eslint . --fix",
+    "lint": "eslint .",
+    "prepare": "husky install",
     "prettier": "prettier --write",
-    "test": "jest",
-    "prepare": "husky install"
+    "release": "release-it",
+    "test": "jest"
   },
   "lint-staged": {
     "*.js": [
@@ -46,6 +47,9 @@
   "homepage": "https://github.com/schibsted/middy-error-handler#readme",
   "devDependencies": {
     "@babel/eslint-parser": "7.17.0",
+    "@commitlint/cli": "^16.2.3",
+    "@commitlint/config-conventional": "^16.2.1",
+    "@release-it/conventional-changelog": "^4.2.2",
     "@middy/core": "2.5.7",
     "eslint": "8.11.0",
     "eslint-config-airbnb-base": "15.0.0",
@@ -58,10 +62,11 @@
     "husky": "7.0.4",
     "jest": "27.5.1",
     "lint-staged": "12.3.6",
-    "prettier": "2.6.0"
+    "prettier": "2.6.0",
+    "release-it": "^14.12.5"
   },
   "dependencies": {},
   "peerDependencies": {
-    "@middy/core": ">=2.5.4"
+    "@middy/core": ">=2.0.0"
   }
 }
