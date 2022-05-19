@@ -1,5 +1,46 @@
 
 
+## [4.2.0](https://github.com/schibsted/middy-error-handler/compare/v4.1.0...v4.2.0) (2022-05-19)
+
+
+### Features
+
+* update Node versions support ([882d374](https://github.com/schibsted/middy-error-handler/commit/882d374c089a04bb4d6dd7542b23675a361ee021))
+
+
+### Miscellaneous Chores
+
+* **deps:** bump minimist from 1.2.5 to 1.2.6 ([#79](https://github.com/schibsted/middy-error-handler/issues/79)) ([673b2e4](https://github.com/schibsted/middy-error-handler/commit/673b2e41bba311d145ba57a6200e738cde8a270c))
+* **deps:** pin dependencies ([#73](https://github.com/schibsted/middy-error-handler/issues/73)) ([b54aa7b](https://github.com/schibsted/middy-error-handler/commit/b54aa7b2cda496679604e4357da5dee049cb2435))
+* **deps:** update commitlint monorepo to v16.2.4 ([#95](https://github.com/schibsted/middy-error-handler/issues/95)) ([163ad3c](https://github.com/schibsted/middy-error-handler/commit/163ad3cda31799dae6daf638b2b83f2d71d505d4))
+* **deps:** update dependency @commitlint/cli to v16.3.0 ([#104](https://github.com/schibsted/middy-error-handler/issues/104)) ([6268ec4](https://github.com/schibsted/middy-error-handler/commit/6268ec4e446ebab719263cb6d36fc6cc5902b6f7))
+* **deps:** update dependency @release-it/conventional-changelog to v4.3.0 ([#89](https://github.com/schibsted/middy-error-handler/issues/89)) ([be84f3d](https://github.com/schibsted/middy-error-handler/commit/be84f3d22c56b787f1ca674b2cc9cace8262ec46))
+* **deps:** update dependency eslint to v8.12.0 ([#81](https://github.com/schibsted/middy-error-handler/issues/81)) ([e879e09](https://github.com/schibsted/middy-error-handler/commit/e879e099b336931e312793e3fef31104d1f3b230))
+* **deps:** update dependency eslint to v8.13.0 ([#86](https://github.com/schibsted/middy-error-handler/issues/86)) ([2f9db21](https://github.com/schibsted/middy-error-handler/commit/2f9db216cc92587bccf7b10408869a318d880ef3))
+* **deps:** update dependency eslint to v8.15.0 ([#99](https://github.com/schibsted/middy-error-handler/issues/99)) ([79f50fd](https://github.com/schibsted/middy-error-handler/commit/79f50fde5e9d49e1f27588c1e1160cf9b4f267b3))
+* **deps:** update dependency eslint-plugin-import to v2.26.0 ([#84](https://github.com/schibsted/middy-error-handler/issues/84)) ([653c768](https://github.com/schibsted/middy-error-handler/commit/653c76825b912547f3d8b3befc50a901cfc166cb))
+* **deps:** update dependency eslint-plugin-jest to v26.1.2 ([#76](https://github.com/schibsted/middy-error-handler/issues/76)) ([011d1b4](https://github.com/schibsted/middy-error-handler/commit/011d1b40ee1152de75198b5a049ae3f520186d23))
+* **deps:** update dependency eslint-plugin-jest to v26.1.3 ([#78](https://github.com/schibsted/middy-error-handler/issues/78)) ([4cfd0a6](https://github.com/schibsted/middy-error-handler/commit/4cfd0a62714aef9bfb0af014014574e329010033))
+* **deps:** update dependency eslint-plugin-jest to v26.1.4 ([#85](https://github.com/schibsted/middy-error-handler/issues/85)) ([9a64c06](https://github.com/schibsted/middy-error-handler/commit/9a64c06becd92ebe20e5bba1cbf2b8970177dd38))
+* **deps:** update dependency eslint-plugin-jest to v26.2.0 ([#102](https://github.com/schibsted/middy-error-handler/issues/102)) ([5db1235](https://github.com/schibsted/middy-error-handler/commit/5db12359b514064aad8cbd68f0847db4cec629df))
+* **deps:** update dependency eslint-plugin-jest to v26.2.1 ([#103](https://github.com/schibsted/middy-error-handler/issues/103)) ([74b39be](https://github.com/schibsted/middy-error-handler/commit/74b39be5bca1e486a9fff3fc8b6cb934a77c4b3a))
+* **deps:** update dependency eslint-plugin-jest to v26.2.2 ([#105](https://github.com/schibsted/middy-error-handler/issues/105)) ([ac0fce4](https://github.com/schibsted/middy-error-handler/commit/ac0fce4e062307c7122ed25924462a06e22d9530))
+* **deps:** update dependency husky to v8 ([#100](https://github.com/schibsted/middy-error-handler/issues/100)) ([6c1e89b](https://github.com/schibsted/middy-error-handler/commit/6c1e89b95dba68b61b1434edf8283278f0f7a501))
+* **deps:** update dependency lint-staged to v12.3.7 ([#74](https://github.com/schibsted/middy-error-handler/issues/74)) ([25e4699](https://github.com/schibsted/middy-error-handler/commit/25e46999b6143407c23a49d95b7208d5ef6ea102))
+* **deps:** update dependency lint-staged to v12.3.8 ([#90](https://github.com/schibsted/middy-error-handler/issues/90)) ([2f729f6](https://github.com/schibsted/middy-error-handler/commit/2f729f678c0e9facc7c941017a4e153af564d2e3))
+* **deps:** update dependency lint-staged to v12.4.0 ([#91](https://github.com/schibsted/middy-error-handler/issues/91)) ([9e7cddf](https://github.com/schibsted/middy-error-handler/commit/9e7cddf94f79f1a2478c87b159739a7510c702be))
+* **deps:** update dependency lint-staged to v12.4.1 ([#94](https://github.com/schibsted/middy-error-handler/issues/94)) ([0671305](https://github.com/schibsted/middy-error-handler/commit/0671305266f8e53ea0a655bb2eb6adf5a711f0d8))
+* **deps:** update dependency prettier to v2.6.1 ([#80](https://github.com/schibsted/middy-error-handler/issues/80)) ([4cc52ae](https://github.com/schibsted/middy-error-handler/commit/4cc52aecb803d860bd58e07386916b9a257ecc41))
+* **deps:** update dependency prettier to v2.6.2 ([#83](https://github.com/schibsted/middy-error-handler/issues/83)) ([b63578b](https://github.com/schibsted/middy-error-handler/commit/b63578bf6b8f614813136bb18b480c41baa3834d))
+* **deps:** update dependency release-it to v14.13.0 ([#75](https://github.com/schibsted/middy-error-handler/issues/75)) ([2300710](https://github.com/schibsted/middy-error-handler/commit/2300710604126493897981ab28666904bac39c12))
+* **deps:** update dependency release-it to v14.13.1 ([#77](https://github.com/schibsted/middy-error-handler/issues/77)) ([b0ed55f](https://github.com/schibsted/middy-error-handler/commit/b0ed55f4d9cac1873d81511f4ac430f99a407bf9))
+* **deps:** update dependency release-it to v14.14.0 ([#82](https://github.com/schibsted/middy-error-handler/issues/82)) ([1b5ba51](https://github.com/schibsted/middy-error-handler/commit/1b5ba51169f9a8b3e97442dc2745683ee9bc4af0))
+* **deps:** update dependency release-it to v14.14.1 ([#87](https://github.com/schibsted/middy-error-handler/issues/87)) ([d3ec3c3](https://github.com/schibsted/middy-error-handler/commit/d3ec3c3b721d35e3144aef26fdeae9b75c0afc38))
+* **deps:** update dependency release-it to v14.14.2 ([#88](https://github.com/schibsted/middy-error-handler/issues/88)) ([ebe201e](https://github.com/schibsted/middy-error-handler/commit/ebe201e056acaa2353c1b539c6a1af1cdfb61d8b))
+* **deps:** update dependency release-it to v14.14.3 ([#96](https://github.com/schibsted/middy-error-handler/issues/96)) ([2d1a776](https://github.com/schibsted/middy-error-handler/commit/2d1a7760838a3750c51244936b6614fd15b0fafb))
+* **deps:** update linters ([#92](https://github.com/schibsted/middy-error-handler/issues/92)) ([90e52d7](https://github.com/schibsted/middy-error-handler/commit/90e52d7b04d1d90f09374c19495eaeaf76eee6c1))
+* **deps:** update release-related tools ([#107](https://github.com/schibsted/middy-error-handler/issues/107)) ([585ee88](https://github.com/schibsted/middy-error-handler/commit/585ee88ebac2cce00c6bb2b675c28c078bf0c564))
+
 ## [4.1.0](https://github.com/schibsted/middy-error-handler/compare/v4.0.1...v4.1.0) (2022-03-17)
 
 
