@@ -73,6 +73,8 @@ test('Keep data already present in response', async () => {
         throw error;
     });
 
+    handler.use(middleware({ logger: false }));
+
     // eslint-disable-next-line no-shadow
     handler.onError(async (handler) => {
         // eslint-disable-next-line no-param-reassign
@@ -82,8 +84,6 @@ test('Keep data already present in response', async () => {
             },
         };
     });
-
-    handler.use(middleware({ logger: false }));
 
     await expect(handler({}, {})).resolves.toMatchObject({
         body: JSON.stringify({ statusCode: 404, message: 'File not found' }),
