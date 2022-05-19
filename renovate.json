@@ -1,13 +1,4 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["github>schibsted/niche-renovate-config:default"],
-  "packageRules": [
-    {
-      "packageNames": ["node"],
-      "major": {
-        "enabled": true
-      },
-      "allowedVersions": "^12.20.0 || ^14.13.1"
-    }
-  ]
+  "extends": ["github>schibsted/niche-renovate-config:default"]
 }
