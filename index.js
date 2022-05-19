@@ -10,11 +10,12 @@ module.exports = ({ logger = console, level = 'error', exposeStackTrace = false,
         if (filter(error) && typeof logger[level] === 'function') {
             logger[level](
                 {
-                    error: (({ name, message, stack, details, status, statusCode, expose }) => ({
+                    error: (({ name, message, stack, details, cause, status, statusCode, expose }) => ({
                         name,
                         message,
                         stack,
                         details,
+                        cause,
                         status,
                         statusCode,
                         expose,
@@ -34,6 +35,7 @@ module.exports = ({ logger = console, level = 'error', exposeStackTrace = false,
                         statusCode: error.statusCode,
                         message: error.message,
                         details: error.details,
+                        cause: error.cause,
                         stack: exposeStackTrace && filter(error) && error.stack,
                     },
                     Boolean
