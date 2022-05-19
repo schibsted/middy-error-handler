@@ -1,5 +1,18 @@
 
 
+### [4.2.1](https://github.com/schibsted/middy-error-handler/compare/v4.2.0...v4.2.1) (2022-05-19)
+
+
+### Bug Fixes
+
+* return error cause ([#108](https://github.com/schibsted/middy-error-handler/issues/108)) ([df0ffb3](https://github.com/schibsted/middy-error-handler/commit/df0ffb336498629bba71c6c8b9c172ea8220e194))
+
+
+### Miscellaneous Chores
+
+* **deps:** update dependency @middy/core to v3 ([#101](https://github.com/schibsted/middy-error-handler/issues/101)) ([b534677](https://github.com/schibsted/middy-error-handler/commit/b5346776c8b84aa1fa53be723727a896154dd924))
+* **deps:** update dependency jest to v28 ([#93](https://github.com/schibsted/middy-error-handler/issues/93)) ([7c009c4](https://github.com/schibsted/middy-error-handler/commit/7c009c4deec8a02d9060ccebe770552aadad7173))
+
 ## [4.2.0](https://github.com/schibsted/middy-error-handler/compare/v4.1.0...v4.2.0) (2022-05-19)
 
 
