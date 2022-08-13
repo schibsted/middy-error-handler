@@ -50,7 +50,7 @@
     "@commitlint/cli": "17.0.3",
     "@commitlint/config-conventional": "17.0.3",
     "@release-it/conventional-changelog": "5.0.0",
-    "@middy/core": "3.1.1",
+    "@middy/core": "3.2.0",
     "eslint": "8.18.0",
     "eslint-config-airbnb-base": "15.0.0",
     "eslint-config-prettier": "8.5.0",
