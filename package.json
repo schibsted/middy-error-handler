@@ -47,8 +47,8 @@
   "homepage": "https://github.com/schibsted/middy-error-handler#readme",
   "devDependencies": {
     "@babel/eslint-parser": "7.19.1",
-    "@commitlint/cli": "17.2.0",
-    "@commitlint/config-conventional": "17.2.0",
+    "@commitlint/cli": "17.3.0",
+    "@commitlint/config-conventional": "17.3.0",
     "@release-it/conventional-changelog": "5.1.1",
     "@middy/core": "3.6.2",
     "eslint": "8.25.0",
